@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Napoli, 22 → 26 octobre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shrikhand&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F8FD; --surface:#FFFFFF; --ink:#16204A; --muted:#55608A; --line:#D8E0F0;
+  --azzurro:#1F4FA3; --limone:#F3C623; --spritz:#F2611E; --mare:#2A9BB0; --foglia:#2E8B57;
+  --on-accent:#FFFFFF; --sky1:#FBD9A8; --sky2:#F5F8FD; --mount:#16204A; --mount2:#2B3770; --sea:#2A9BB0;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C1230; --surface:#151D47; --ink:#EEF1FB; --muted:#A7B0D6; --line:#27316A;
+    --azzurro:#7FA6FF; --limone:#F6D04D; --spritz:#FF7A3D; --mare:#4CC3D6; --foglia:#5CC28A;
+    --on-accent:#0C1230; --sky1:#3A2A5E; --sky2:#0C1230; --mount:#050818; --mount2:#1A2150; --sea:#1C6E80;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C1230; --surface:#151D47; --ink:#EEF1FB; --muted:#A7B0D6; --line:#27316A;
+  --azzurro:#7FA6FF; --limone:#F6D04D; --spritz:#FF7A3D; --mare:#4CC3D6; --foglia:#5CC28A;
+  --on-accent:#0C1230; --sky1:#3A2A5E; --sky2:#0C1230; --mount:#050818; --mount2:#1A2150; --sea:#1C6E80;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--spritz);outline-offset:2px;border-radius:6px}
+.tiles{height:28px;background-color:#F7F9FC;background-size:28px 28px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23F7F9FC'/%3E%3Cpath d='M0 0h20a20 20 0 0 1-20 20zM80 0v20a20 20 0 0 1-20-20zM0 80v-20a20 20 0 0 1 20 20zM80 80h-20a20 20 0 0 1 20-20z' fill='%231F4FA3'/%3E%3Cpath d='M40 8c6 8 6 16 0 22c-6-6-6-14 0-22zM40 72c6-8 6-16 0-22c-6 6-6 14 0 22zM8 40c8-6 16-6 22 0c-6 6-14 6-22 0zM72 40c-8-6-16-6-22 0c6 6 14 6 22 0z' fill='%232E8B57'/%3E%3Ccircle cx='40' cy='40' r='13' fill='%23F3C623'/%3E%3Ccircle cx='40' cy='40' r='5' fill='%23F2611E'/%3E%3C/svg%3E")}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2) 92%)}
+.hero svg{display:block;width:100%;height:auto;max-height:360px}
+.sun{transform-box:fill-box;transform-origin:center;animation:rise 2.4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{transform:translateY(60%);opacity:.2}to{transform:none;opacity:1}}
+.plume{animation:drift 9s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(14px)}}
+.hero-text{position:absolute;left:0;right:0;top:0;padding-top:clamp(18px,5vw,40px)}
+h1{font-family:"Shrikhand",Georgia,serif;font-weight:400;font-size:clamp(64px,19vw,148px);line-height:.9;margin:0;color:var(--azzurro);letter-spacing:-.01em;text-shadow:3px 3px 0 var(--limone)}
+.sub{margin:10px 0 0;font-size:clamp(16px,4.2vw,20px);font-weight:500;max-width:30ch}
+.status{margin:-6px auto 0;position:relative;z-index:2}
+.status-card{background:var(--azzurro);color:var(--on-accent);border-radius:20px;padding:16px 20px;display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.status-card b{font-size:clamp(22px,6vw,30px);font-weight:800;display:block;line-height:1.1}
+.status-card span{opacity:.85;font-size:15px}
+.status-card a{background:var(--limone);color:#16204A;text-decoration:none;font-weight:700;padding:10px 16px;border-radius:999px;white-space:nowrap}
+
+/* Nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);padding:12px 0 10px;margin-top:18px;border-bottom:1px solid var(--line)}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:0 0 auto;text-decoration:none;font-weight:700;font-size:15px;padding:8px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--ink)}
+.tabs a.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+
+section{padding:34px 0 8px}
+h2{font-family:"Shrikhand",Georgia,serif;font-weight:400;font-size:clamp(32px,8vw,44px);line-height:1;margin:0 0 18px;color:var(--spritz)}
+h3{font-size:19px;margin:0 0 4px;font-weight:800}
+.note{color:var(--muted);font-size:15px;margin:0 0 16px}
+
+/* Days */
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:22px}
+.day{font:inherit;cursor:pointer;background:var(--surface);color:var(--ink);border:1.5px solid var(--line);border-radius:14px;padding:8px 4px;text-align:center;line-height:1.15}
+.day small{display:block;font-size:12px;color:var(--muted);font-weight:500}
+.day strong{font-size:22px;font-weight:800}
+.day[aria-pressed="true"]{background:var(--limone);border-color:var(--limone);color:#16204A}
+.day[aria-pressed="true"] small{color:#16204A}
+.day-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.day-title{font-size:24px;font-weight:800;margin:0}
+.trace{font-weight:700;font-size:15px;color:var(--azzurro);text-decoration:none;border-bottom:2px solid var(--limone)}
+.timeline{list-style:none;margin:16px 0 0;padding:0;position:relative}
+.timeline::before{content:"";position:absolute;left:58px;top:8px;bottom:8px;width:3px;background:var(--line);border-radius:2px}
+.stop{display:grid;grid-template-columns:48px 1fr;gap:22px;padding:0 0 22px;position:relative}
+.stop::before{content:"";position:absolute;left:53px;top:7px;width:13px;height:13px;border-radius:50%;background:var(--surface);border:3px solid var(--azzurro)}
+.stop.done{opacity:.5}
+.stop.next::before{background:var(--spritz);border-color:var(--spritz);box-shadow:0 0 0 6px color-mix(in srgb,var(--spritz) 25%,transparent)}
+.time{font-weight:800;font-size:15px;text-align:right;padding-top:2px;font-variant-numeric:tabular-nums}
+.stop p{margin:2px 0 10px;color:var(--muted);font-size:15.5px;max-width:56ch}
+.pill{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 9px;border-radius:999px;margin-left:6px;vertical-align:2px}
+.pill.book{background:color-mix(in srgb,var(--spritz) 18%,transparent);color:var(--spritz)}
+.pill.now{background:var(--spritz);color:var(--on-accent)}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:14.5px;font-weight:700;text-decoration:none;padding:7px 13px;border-radius:10px;cursor:pointer;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.btn.go{background:var(--azzurro);border-color:var(--azzurro);color:var(--on-accent)}
+
+/* Booking */
+.book-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.book-item{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px}
+.book-item.ok{border-color:var(--foglia)}
+.book-item input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--foglia)}
+.book-item label{font-weight:800;cursor:pointer}
+.book-item p{margin:2px 0 8px;color:var(--muted);font-size:15px}
+.warn{color:var(--spritz);font-weight:700}
+
+/* Near */
+.near{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.near a{display:flex;flex-direction:column;gap:2px;text-decoration:none;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px}
+.near a span{font-size:28px;line-height:1}
+.near a b{font-size:16px;margin-top:6px}
+.near a small{color:var(--muted);font-size:13.5px}
+.home{margin-top:14px;display:grid;grid-template-columns:1fr auto;gap:8px}
+input[type=text]{font:inherit;font-size:16px;width:100%;padding:10px 12px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);min-width:0}
+.progress{height:10px;border-radius:999px;background:var(--line);overflow:hidden;margin:0 0 16px}
+.progress i{display:block;height:100%;background:var(--foglia);border-radius:999px;transition:width .4s}
+/* Lexicon */
+.cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.cat{font:inherit;font-size:14.5px;font-weight:700;cursor:pointer;padding:7px 13px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.cat[aria-pressed="true"]{background:var(--azzurro);border-color:var(--azzurro);color:var(--on-accent)}
+.lex{list-style:none;margin:0;padding:0;background:var(--surface);border:1.5px solid var(--line);border-radius:18px}
+.lex li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.lex li:last-child{border:0}
+.lex b{display:block;font-size:17px;color:var(--azzurro)}
+.lex span{color:var(--muted);font-size:15px}
+.lex em{font-style:normal;font-size:13px;color:var(--spritz);font-weight:700;margin-left:6px}
+.say{font:inherit;cursor:pointer;width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:18px}
+/* Survival */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:16px}
+.card p{margin:4px 0 0;color:var(--muted);font-size:15px}
+.card.alert{border-color:var(--spritz)}
+.phr{list-style:none;padding:0;margin:6px 0 0}
+.phr li{padding:5px 0;border-bottom:1px dashed var(--line);font-size:15.5px}
+.phr li:last-child{border:0}
+.phr b{color:var(--azzurro)}
+.spritz{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.spritz svg{width:96px;height:auto;flex:0 0 auto}
+.liquid{transition:transform .5s cubic-bezier(.3,1.4,.5,1)}
+.count{font-family:"Shrikhand",Georgia,serif;font-size:52px;line-height:1;color:var(--spritz)}
+/* Extras */
+.hours{font-size:14px;font-weight:600;color:var(--foglia);margin:-4px 0 10px}
+.hours.unv{color:var(--muted);font-weight:500}
+.rain{background:var(--surface);border:1.5px dashed var(--mare);border-radius:14px;padding:10px 14px;margin:12px 0 4px}
+.rain summary{cursor:pointer;font-weight:700;color:var(--mare)}
+.rain p{margin:8px 0 10px;color:var(--ink);font-size:15.5px}
+.tix{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.tix li{display:grid;grid-template-columns:86px 1fr;gap:14px;background:var(--surface);border:1.5px solid var(--line);border-left:6px solid var(--azzurro);border-radius:16px;padding:14px 16px}
+.tix li.pending{border-left-color:var(--spritz);opacity:.85}
+.tix-d b{display:block;font-size:17px}
+.tix-d span{font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tix p{margin:2px 0 8px;color:var(--muted);font-size:15px}
+.wheel-box{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:8px}
+.wheel-wrap{position:relative;width:150px;height:150px;flex:0 0 auto}
+.wheel{width:100%;height:100%;transition:transform 3.2s cubic-bezier(.15,.9,.2,1)}
+.pin{position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:11px solid transparent;border-right:11px solid transparent;border-top:20px solid var(--ink)}
+.verdict{font-family:"Shrikhand",Georgia,serif;font-size:24px;line-height:1.15;color:var(--spritz);margin:0 0 12px;max-width:14ch}
+@media (prefers-reduced-motion:reduce){.wheel{transition:none}}
+footer{padding:40px 0 50px;text-align:center;color:var(--muted);font-size:15px}
+footer .theme{margin-top:10px}
+@media (prefers-reduced-motion:reduce){.sun,.plume,.liquid{animation:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="tiles" role="presentation"></div>
+<header class="hero">
+  <svg viewBox="0 0 400 210" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <circle class="sun" cx="300" cy="96" r="38" fill="var(--spritz)"/>
+    <g class="plume" opacity=".35" fill="var(--mount2)">
+      <ellipse cx="226" cy="74" rx="14" ry="8"/><ellipse cx="240" cy="62" rx="18" ry="9"/><ellipse cx="258" cy="52" rx="15" ry="7"/>
+    </g>
+    <path d="M60 170 L150 112 Q170 100 186 108 L206 92 Q218 84 230 92 L320 160 L400 176 L400 210 L0 210 L0 178 Z" fill="var(--mount2)"/>
+    <path d="M0 184 L110 150 L170 124 L214 98 Q220 94 226 98 L300 152 L400 182 L400 210 L0 210 Z" fill="var(--mount)"/>
+    <rect y="192" width="400" height="18" fill="var(--sea)"/>
+    <path d="M0 196 q10 -3 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="1.2"/>
+  </svg>
+  <div class="hero-text"><div class="wrap">
+    <h1>Napoli</h1>
+    <p class="sub">Du jeudi 22 au lundi 26 octobre. Escale à Bari, trois mecs, un volcan, zéro regret.</p>
+  </div></div>
+</header>
+
+<div class="wrap status"><div class="status-card" id="status" aria-live="polite">
+  <div><b id="st-big">Calcul en cours</b><span id="st-small"></span></div>
+  <a id="st-link" href="#programme">Voir le programme</a>
+</div></div>
+
+<nav aria-label="Sections"><div class="wrap tabs" id="tabs">
+  <a href="#programme" class="on">Programme</a>
+  <a href="#billets">Billets</a>
+  <a href="#reserver">À réserver</a>
+  <a href="#autour">Autour de moi</a>
+  <a href="#parler">Parler</a>
+  <a href="#kit">Kit de survie</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="programme">
+    <h2>Programme</h2>
+    <div class="days" id="days" role="group" aria-label="Choisir un jour"></div>
+    <div class="day-head"><p class="day-title" id="day-title"></p><a class="trace" id="trace" target="_blank" rel="noopener"></a></div>
+    <details class="rain" id="rain"><summary>☔ Il pleut ? Plan B</summary><p id="rain-txt"></p><a class="btn go" id="rain-go" target="_blank" rel="noopener" href="#">Y aller</a></details>
+    <ol class="timeline" id="timeline"></ol>
+  </section>
+
+  <section id="billets">
+    <h2>Billets</h2>
+    <p class="note">Tout ce qui est réservé, au même endroit. Les codes de réservation restent dans les mails.</p>
+    <ul class="tix">
+      <li><div class="tix-d"><b>Jeu 22</b><span>16:45 → 19:20</span></div><div><h3>✈️ Vol Nantes → Bari</h3><p>Transavia TO 4016. Ce n’est pas une carte d’embarquement : s’enregistrer en ligne avant.</p><div class="btns"><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=A%C3%A9roport%20Nantes%20Atlantique">Aéroport de Nantes</a></div></div></li>
+      <li><div class="tix-d"><b>Jeu 22</b><span>1 nuit</span></div><div><h3>🛏️ Oberdan Guest House, Bari</h3><p>40d Via Guglielmo Oberdan, 70126 Bari.</p><div class="btns"><a class="btn go" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=40d%20Via%20Guglielmo%20Oberdan%2C%2070126%20Bari&amp;travelmode=walking">Y aller</a></div></div></li>
+      <li><div class="tix-d"><b>Ven 23</b><span>13:55 → 17:10</span></div><div><h3>🚌 Bus Bari → Naples</h3><p>Départ Bari, terminal FS Park via Capruzzi. Arrivée Napoli Ferraris.</p><div class="btns"><a class="btn go" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=Terminal%20Bus%20Bari%2C%20Via%20Capruzzi%2C%20Bari&amp;travelmode=walking">Aller au bus</a></div></div></li>
+      <li><div class="tix-d"><b>Ven 23</b><span>→ lun 26</span></div><div><h3>🛏️ Logement à Naples</h3><p>6 Via Vecchia Poggioreale, 3e étage, 80143 Naples. Loin des quartiers de sortie : retour de nuit en taxi.</p><div class="btns"><a class="btn go" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&amp;destination=6%20Via%20Vecchia%20Poggioreale%2C%2080143%20Napoli&amp;travelmode=transit">Rentrer</a></div></div></li>
+      <li class="pending"><div class="tix-d"><b>Lun 26</b><span>À venir</span></div><div><h3>✈️ Vols Naples → Milan → Paris</h3><p>Horaires et aéroports à ajouter.</p></div></li>
+    </ul>
+  </section>
+
+  <section id="reserver">
+    <h2>À réserver</h2>
+    <div class="progress" aria-hidden="true"><i id="bk-bar" style="width:0"></i></div>
+    <p class="note" id="bk-count"></p>
+    <p class="note">Coche quand c’est fait. Tant que ce n’est pas coché, ce n’est pas acquis.</p>
+    <ul class="book-list" id="books"></ul>
+  </section>
+
+  <section id="autour">
+    <h2>Autour de moi</h2>
+    <p class="note">Ouvre Google Maps sur ce qu’il y a près de toi, là où tu es.</p>
+    <div class="near" id="near"></div>
+    <div class="home"><input type="text" id="home" placeholder="Adresse du logement" aria-label="Adresse du logement"><a class="btn go" id="home-go" target="_blank" rel="noopener" href="#">Rentrer</a></div>
+  </section>
+
+  <section id="parler">
+    <h2>Parler</h2>
+    <p class="note" id="lex-note">Touche le haut-parleur pour entendre la prononciation.</p>
+    <div class="cats" id="cats" role="group" aria-label="Thème"></div>
+    <ul class="lex" id="lex"></ul>
+  </section>
+
+  <section id="kit">
+    <h2>Kit de survie</h2>
+    <div class="grid2">
+      <div class="card alert"><h3>Nuit de samedi : une heure offerte</h3><p>Passage à l’heure d’hiver dans la nuit du 24 au 25. À 3 h, il redevient 2 h.</p></div>
+      <div class="card"><h3>Urgences</h3><p>112, numéro unique européen, gratuit depuis n’importe quel téléphone.</p><div class="btns" style="margin-top:10px"><a class="btn go" href="tel:112">Appeler le 112</a></div></div>
+      <div class="card"><h3>Herculanum</h3><p>Train Circumvesuviana direction Sorrento, descendre à Ercolano Scavi, puis 10 min à pied.</p></div>
+      <div class="card"><h3>Vésuve</h3><p>Pas de réseau à l’entrée : billet acheté et téléchargé avant de monter. Baskets obligatoires.</p></div>
+      <div class="card"><h3>Codes locaux</h3>
+        <ul class="phr">
+          <li><b>Le café</b> se boit debout au comptoir, en deux gorgées. Assis, il coûte plus cher.</li>
+          <li><b>Le coperto</b>, c’est le couvert facturé à table. Normal, pas une arnaque.</li>
+          <li><b>Les scooters</b> passent partout, même en sens interdit. Regarder des deux côtés.</li>
+          <li><b>Dans la foule</b> et dans les trains, téléphone et portefeuille en poche avant.</li>
+        </ul>
+      </div>
+      <div class="card"><h3>Qui paie la tournée ?</h3>
+        <div class="wheel-box">
+          <div class="wheel-wrap"><svg viewBox="-110 -110 220 220" class="wheel" id="wheel" aria-hidden="true"></svg><div class="pin" aria-hidden="true"></div></div>
+          <div><p class="verdict" id="verdict" aria-live="polite">Le destin décide.</p><button class="btn go" id="spin" type="button">Lancer la roue</button></div>
+        </div>
+      </div>
+      <div class="card"><h3>Spritz-o-mètre</h3>
+        <div class="spritz">
+          <svg viewBox="0 0 100 140" aria-hidden="true">
+            <defs><clipPath id="glass"><path d="M18 20 Q50 30 82 20 L74 112 Q50 120 26 112 Z"/></clipPath></defs>
+            <g clip-path="url(#glass)"><rect class="liquid" id="liquid" x="0" y="20" width="100" height="100" fill="var(--spritz)" style="transform:translateY(100px)"/>
+            <circle cx="40" cy="90" r="3" fill="#FFFFFF" opacity=".5"/><circle cx="58" cy="76" r="2" fill="#FFFFFF" opacity=".5"/></g>
+            <path d="M18 20 Q50 30 82 20 L74 112 Q50 120 26 112 Z" fill="none" stroke="var(--ink)" stroke-width="3"/>
+            <path d="M50 116 V134 M34 136 H66" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="72" cy="22" r="10" fill="var(--limone)" stroke="var(--ink)" stroke-width="2"/>
+          </svg>
+          <div><div class="count" id="sp-count">0</div><p id="sp-label">spritz au compteur</p>
+            <div class="btns" style="margin-top:10px"><button class="btn go" id="sp-add" type="button">Un de plus</button><button class="btn" id="sp-reset" type="button">Remettre à zéro</button></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap">Ritorneremo.<div class="theme"><button class="btn" id="theme" type="button">Changer de thème</button></div></div></footer>
+
+<script>
+const DAYS=[
+ {d:"2026-10-22",short:"Jeu",num:22,title:"Jeudi 22 : escale à Bari",mode:"walking",
+  rain:"Dîner au chaud dans une trattoria de Bari Vecchia plutôt que la street food.",stops:[
+  {t:"16:45",h:16.75,n:"Décollage de Nantes",b:"Transavia TO 4016. Atterrissage à Bari à 19 h 20.",q:"Aéroport Nantes Atlantique"},
+  {t:"19:20",h:19.33,n:"Atterrissage à Bari",b:"Train ou navette jusqu’à la gare centrale.",q:"Bari Centrale"},
+  {t:"20:15",h:20.25,n:"Oberdan Guest House",b:"40d Via Guglielmo Oberdan. On pose les sacs et on file.",q:"40d Via Guglielmo Oberdan, 70126 Bari",o:"Heure d’arrivée à confirmer avec l’hôte",v:0},
+  {t:"21:00",h:21,n:"Bari Vecchia",b:"La vieille ville. Panzerotti et sgagliozze (polenta frite) dans la rue.",q:"Bari Vecchia, Bari",o:"Quartier ouvert, pas d’horaire"},
+  {t:"22:30",h:22.5,n:"Piazza Mercantile",b:"Le cœur de la nuit à Bari. Bus à 13 h 55 demain : la soirée peut durer.",q:"Piazza Mercantile, Bari",o:"Place publique, pas d’horaire"}]},
+ {d:"2026-10-23",short:"Ven",num:23,title:"Vendredi 23 : Bari le matin, Naples le soir",mode:"walking",
+  rain:"À Bari : la basilique Saint-Nicolas et la cathédrale San Sabino sont à 5 min l’une de l’autre, tout est couvert. À Naples : la Galleria Umberto I, galerie couverte, à la place des Quartieri.",rainq:"Galleria Umberto I, Napoli",stops:[
+  {t:"10:30",h:10.5,n:"Basilique Saint-Nicolas",b:"Le saint patron de Bari, crypte sous la basilique.",q:"Basilica di San Nicola, Bari",o:"Tous les jours 7 h–20 h 30, entrée libre",v:1},
+  {t:"11:15",h:11.25,n:"Strada delle Orecchiette",b:"Les nonnas façonnent les pâtes devant leur porte, à l’Arco Basso.",q:"Arco Basso, Bari",o:"Rue, l’activité est surtout le matin",v:0},
+  {t:"12:15",h:12.25,n:"Focaccia barese",b:"Une part à la main, en marchant vers le bord de mer.",q:"Panificio Fiore, Bari",o:"Horaires non vérifiés",v:0},
+  {t:"13:55",h:13.92,n:"Bus Bari → Naples",b:"Départ du terminal FS Park, via Capruzzi. Arrivée 17 h 10.",q:"Terminal Bus Bari, Via Capruzzi, Bari",o:"Billet réservé. Être là 15 min avant"},
+  {t:"17:10",h:17.17,n:"Arrivée à Naples",b:"Napoli Ferraris, à quelques minutes du logement.",q:"Napoli Ferraris Stazione Vesuviana"},
+  {t:"17:45",h:17.75,n:"Déposer les sacs au logement",b:"Via Vecchia Poggioreale, 3e étage.",q:"6 Via Vecchia Poggioreale, 80143 Napoli"},
+  {t:"18:45",h:18.75,n:"Quartieri Spagnoli et murale Maradona",b:"Métro jusqu’à Toledo, la plus belle station d’Europe, puis les ruelles.",q:"Largo Maradona, Quartieri Spagnoli, Napoli",o:"Rue, pas d’horaire"},
+  {t:"20:30",h:20.5,n:"Pizza chez Concettina ai Tre Santi",b:"Au cœur du Rione Sanità. Pas de réservation en ligne : arriver à l’heure.",q:"Concettina ai Tre Santi, Napoli",o:"Vendredi 11 h–23 h 30",v:1},
+  {t:"23:00",h:23,n:"Piazza Bellini",b:"Terrasses étudiantes posées sur des remparts grecs.",q:"Piazza Bellini, Napoli",o:"Place publique, pas d’horaire"}]},
+ {d:"2026-10-24",short:"Sam",num:24,title:"Samedi 24 : ruines, volcan, nuit longue",mode:"transit",
+  rain:"Le cratère ferme par mauvais temps. Remplacer par le Musée archéologique (MANN) : mosaïques de Pompéi et le Cabinet secret, la salle des fresques érotiques. Ouvert 9 h–19 h 30, dernière entrée 18 h 30.",rainq:"Museo Archeologico Nazionale di Napoli",stops:[
+  {t:"9:30",h:9.5,n:"Herculanum",b:"Mieux conservé et moins bondé que Pompéi.",q:"Parco Archeologico di Ercolano",book:true,o:"Horaire d’hiver : 8 h 30–17 h, dernière entrée 15 h 30",v:1},
+  {t:"13:30",h:13.5,n:"Cratère du Vésuve",b:"Navette Vesuvio Express depuis la gare d’Ercolano, puis le sentier jusqu’au bord du cratère.",q:"Gran Cono del Vesuvio, Ercolano",book:true,o:"En octobre 9 h–16 h. Fermé si mauvais temps",v:1},
+  {t:"22:30",h:22.5,n:"Baretti de Chiaia",b:"Vico Belledonne : la foule boit dans la rue jusqu’à tard.",q:"Vico Belledonne a Chiaia, Napoli",o:"Bars, fermeture variable"},
+  {t:"1:00",h:25,n:"Centro storico jusqu’au bout",b:"Largo San Giovanni Maggiore. À 3 h, il redevient 2 h : une heure offerte.",q:"Largo San Giovanni Maggiore, Napoli"}]},
+ {d:"2026-10-25",short:"Dim",num:25,title:"Dimanche 25 : Naples d’en dessous",mode:"walking",
+  rain:"Journée déjà presque toute sous terre. Remplacer le Lungomare par la Galleria Umberto I, galerie couverte.",rainq:"Galleria Umberto I, Napoli",stops:[
+  {t:"10:30",h:10.5,n:"Cimitero delle Fontanelle",b:"Grotte de tuf et des milliers de crânes.",q:"Cimitero delle Fontanelle, Napoli",book:true,o:"10 h–18 h, dernière entrée 17 h 15. Réservation obligatoire",v:1},
+  {t:"12:00",h:12,n:"Catacombes de San Gennaro",b:"Même quartier, visite guidée d’une heure par les jeunes de la Sanità.",q:"Catacombe di San Gennaro, Napoli",book:true,o:"Le dimanche, dernière visite à 14 h",v:1},
+  {t:"13:30",h:13.5,n:"Spaccanapoli et sfogliatella",b:"L’artère du centre historique, cuoppo de friture en main.",q:"Via San Biagio dei Librai, Napoli",o:"Rue, pas d’horaire"},
+  {t:"15:00",h:15,n:"Cappella Sansevero",b:"Le Christ voilé et les « machines anatomiques ».",q:"Museo Cappella Sansevero, Napoli",book:true,o:"9 h–19 h, dernière entrée 18 h 30. Fermé le mardi",v:1},
+  {t:"16:30",h:16.5,n:"Napoli Sotterranea",b:"Citernes grecques à 40 m sous la ville, environ 1 h 30.",q:"Napoli Sotterranea, Piazza San Gaetano, Napoli",book:true,o:"Visites guidées, dernier départ 18 h",v:1},
+  {t:"19:00",h:19,n:"Lungomare et Castel dell’Ovo",b:"De nuit : avec le changement d’heure, le soleil se couche vers 17 h.",q:"Castel dell'Ovo, Napoli",o:"Balade extérieure, toujours accessible"},
+  {t:"20:30",h:20.5,n:"Dîner au Borgo Marinari",b:"Dernier soir, on finit en beauté.",q:"Borgo Marinari, Napoli"}]},
+ {d:"2026-10-26",short:"Lun",num:26,title:"Lundi 26 : retour",mode:"transit",stops:[
+  {t:"Matin",h:7,n:"Vol Naples → Milan",b:"Navette Alibus jusqu’à l’aéroport. Être sur place deux heures avant.",q:"Aeroporto Internazionale di Napoli"},
+  {t:"Puis",h:12,n:"Vol Milan → Paris",b:"Vérifier que l’arrivée et le départ se font dans le même aéroport milanais.",q:"Milano"}]}
+];
+const BOOKS=[
+ {id:"vesuvio",n:"Cratère du Vésuve, samedi après-midi",b:"Billet en ligne uniquement, sur créneau. Le week-end, ça part vite.",s:"Parco Nazionale del Vesuvio Gran Cono biglietti",urgent:true},
+ {id:"fontanelle",n:"Cimitero delle Fontanelle, dimanche 10 h 30",b:"Réservation obligatoire, places limitées par créneau. Vérifier l’ouverture du dimanche.",s:"Cimitero delle Fontanelle prenotazione",urgent:true},
+ {id:"sansevero",n:"Cappella Sansevero, dimanche 15 h",b:"Réservation obligatoire sur le site du musée.",url:"https://www.museosansevero.it/acquista-ticket/",urgent:true},
+ {id:"sotterranea",n:"Napoli Sotterranea, dimanche 16 h 30",b:"Visites guidées à heure fixe, places limitées.",s:"Napoli Sotterranea prenotazione visita"},
+ {id:"catacombe",n:"Catacombes de San Gennaro, dimanche 12 h",b:"Visites guidées à heure fixe.",s:"Catacombe di Napoli biglietti"},
+ {id:"ercolano",n:"Herculanum, samedi matin",b:"Billet en ligne pour éviter la file.",s:"Parco Archeologico Ercolano biglietti"}
+];
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const maps=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const dir=(q,m)=>"https://www.google.com/maps/dir/?api=1&destination="+encodeURIComponent(q)+"&travelmode="+(m||"walking");
+const trace=day=>{const s=day.stops.map(x=>x.q);if(s.length<2)return dir(s[0],day.mode);
+  let u="https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(s[0])+"&destination="+encodeURIComponent(s[s.length-1])+"&travelmode="+day.mode;
+  if(s.length>2)u+="&waypoints="+encodeURIComponent(s.slice(1,-1).join("|"));return u};
+function romeNow(){const p=new Intl.DateTimeFormat("fr-CA",{timeZone:"Europe/Rome",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
+  const g=t=>p.find(x=>x.type===t).value;return{date:g("year")+"-"+g("month")+"-"+g("day"),h:(+g("hour")%24)+(+g("minute"))/60}}
+const DEP=new Date("2026-10-22T16:45:00+02:00"), END=new Date("2026-10-26T14:00:00+01:00");
+let current=0;
+function todayIndex(){const n=romeNow();return DAYS.findIndex(d=>d.d===n.date)}
+function renderDays(){const box=$("#days");box.innerHTML="";DAYS.forEach((d,i)=>{const b=document.createElement("button");b.type="button";b.className="day";b.setAttribute("aria-pressed",i===current);
+  b.innerHTML="<small>"+d.short+"</small><strong>"+d.num+"</strong>";b.onclick=()=>{current=i;renderDays();renderDay()};box.appendChild(b)})}
+function renderDay(){const d=DAYS[current];$("#day-title").textContent=d.title;
+  const rb=$("#rain");if(d.rain){rb.hidden=false;rb.open=false;$("#rain-txt").textContent=d.rain;const rl=$("#rain-go");if(d.rainq){rl.hidden=false;rl.href=dir(d.rainq,"transit")}else rl.hidden=true}else rb.hidden=true;const tr=$("#trace");tr.href=trace(d);tr.textContent=d.stops.length>1?"Tracé de la journée":"Itinéraire";
+  const n=romeNow(),isToday=n.date===d.d;let nextIdx=-1;if(isToday)nextIdx=d.stops.findIndex((s,i)=>{const end=d.stops[i+1]?d.stops[i+1].h:s.h+3;return n.h<end});
+  const ol=$("#timeline");ol.innerHTML="";d.stops.forEach((s,i)=>{const li=document.createElement("li");li.className="stop";
+    if(isToday&&nextIdx>-1&&i<nextIdx)li.classList.add("done");if(isToday&&(nextIdx===-1?false:i===nextIdx))li.classList.add("next");
+    if(isToday&&nextIdx===-1)li.classList.add("done");
+    const tag=(isToday&&i===nextIdx)?'<span class="pill now">En cours</span>':(s.book?'<span class="pill book">À réserver</span>':"");
+    li.innerHTML='<div class="time">'+s.t+'</div><div><h3>'+s.n+tag+'</h3><p>'+s.b+'</p>'+(s.o?'<div class="hours'+(s.v===0?' unv':'')+'">'+(s.v===1?"✓ ":"")+s.o+'</div>':"")+'<div class="btns"><a class="btn go" target="_blank" rel="noopener" href="'+dir(s.q,d.mode==="walking"?"walking":"transit")+'">Y aller</a><a class="btn" target="_blank" rel="noopener" href="'+maps(s.q)+'">Sur la carte</a></div></div>';
+    ol.appendChild(li)})}
+function renderStatus(){const now=new Date(),big=$("#st-big"),small=$("#st-small"),link=$("#st-link");
+  if(now<DEP){const ms=DEP-now,dd=Math.floor(ms/864e5),hh=Math.floor(ms%864e5/36e5),mm=Math.floor(ms%36e5/6e4);
+    big.textContent="Décollage dans "+(dd?dd+" j ":"")+hh+" h "+String(mm).padStart(2,"0");
+    const left=BOOKS.filter(b=>!store.get("book:"+b.id,false)).length;small.textContent=left?left+" réservation"+(left>1?"s":"")+" pas encore cochée"+(left>1?"s":""):"Tout est réservé. Plus qu’à faire la valise.";
+    link.textContent=left?"Réserver":"Voir le programme";link.href=left?"#reserver":"#programme"}
+  else if(now<END){const i=todayIndex();if(i>-1){const d=DAYS[i],n=romeNow(),nx=d.stops.find((s,k)=>{const e=d.stops[k+1]?d.stops[k+1].h:s.h+3;return n.h<e});
+      big.textContent="Jour "+(i+1)+" sur 5";small.textContent=nx?" Maintenant : "+nx.n:" Journée bouclée.";
+      if(nx){link.textContent="Y aller";link.href=dir(nx.q,d.mode==="walking"?"walking":"transit");link.target="_blank"}}}
+  else{big.textContent="C’était Naples.";small.textContent=" Ritorneremo.";link.textContent="Revoir le programme";link.href="#programme";link.removeAttribute("target")}}
+function renderBooks(){const ul=$("#books");ul.innerHTML="";const done=BOOKS.filter(b=>store.get("book:"+b.id,false)).length;$("#bk-bar").style.width=(done/BOOKS.length*100)+"%";$("#bk-count").textContent=done+" sur "+BOOKS.length+" réservées.";BOOKS.forEach(b=>{const ok=store.get("book:"+b.id,false);const li=document.createElement("li");li.className="book-item"+(ok?" ok":"");
+  li.innerHTML='<input type="checkbox" id="bk-'+b.id+'"'+(ok?" checked":"")+'><div><label for="bk-'+b.id+'">'+b.n+'</label><p>'+(b.urgent&&!ok?'<span class="warn">Urgent. </span>':"")+b.b+'</p><a class="btn" target="_blank" rel="noopener" href="'+(b.url||"https://www.google.com/search?q="+encodeURIComponent(b.s))+'">'+(b.url?"Réserver sur le site officiel":"Trouver le site officiel")+'</a></div>';
+  li.querySelector("input").onchange=e=>{store.set("book:"+b.id,e.target.checked);renderBooks();renderStatus()};ul.appendChild(li)})}
+/* Near */
+const NEAR=[["🍹","Un bar","Pour le prochain spritz","bar"],["🍕","Une pizzeria","Margherita a portafoglio","pizzeria"],["☕","Un café","Espresso au comptoir","caffetteria"],["🍦","Un glacier","Gelato du soir","gelateria"],["🏧","Un distributeur","Bancomat","bancomat"],["💊","Une pharmacie","Farmacia","farmacia"],["🚇","Le métro","Metropolitana","stazione metropolitana"],["🚕","Une station de taxi","Posteggio taxi","posteggio taxi"]];
+function renderNear(){$("#near").innerHTML=NEAR.map(n=>'<a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(n[3])+'"><span aria-hidden="true">'+n[0]+'</span><b>'+n[1]+'</b><small>'+n[2]+'</small></a>').join("");
+  const h=$("#home"),go=$("#home-go");h.value=store.get("home","6 Via Vecchia Poggioreale, 80143 Napoli");const upd=()=>{const v=h.value.trim();go.href=v?dir(v,"walking"):"#";go.setAttribute("aria-disabled",!v)};upd();
+  h.oninput=()=>{store.set("home",h.value.trim());upd()};go.onclick=e=>{if(!h.value.trim()){e.preventDefault();h.focus()}}}
+/* Lexicon */
+const LEX={
+ "Les bases":[["Buongiorno / Buonasera","Bonjour / Bonsoir"],["Per favore","S’il vous plaît"],["Grazie mille","Merci beaucoup"],["Prego","Je vous en prie, ou « allez-y »"],["Scusi","Pardon (pour interpeller)"],["Permesso","Pardon, je passe"],["Non parlo italiano","Je ne parle pas italien"],["Quanto costa ?","Combien ça coûte ?"],["Dov’è… ?","Où est… ?"],["Aiuto !","À l’aide !"]],
+ "Au bar":[["Tre spritz, per favore","Trois spritz, s’il vous plaît"],["Tre birre alla spina","Trois bières pression"],["Un altro giro !","Une autre tournée !"],["Salute ! / Cin cin !","Santé !"],["Offro io","C’est ma tournée"],["Un caffè","Un espresso (on ne dit pas espresso)"],["Caffè sospeso","Un café payé d’avance pour un inconnu. Tradition napolitaine."],["A che ora chiude ?","À quelle heure vous fermez ?"],["Dove si balla stasera ?","Où on danse ce soir ?"]],
+ "À table":[["Un tavolo per tre","Une table pour trois"],["Cosa ci consiglia ?","Vous nous conseillez quoi ?"],["Una margherita a portafoglio","Pizza pliée en quatre, à manger dans la rue"],["Un cuoppo","Cornet de friture"],["Una frittatina","Beignet de pâtes frit"],["Il conto, per favore","L’addition, s’il vous plaît"],["Possiamo pagare con la carta ?","On peut payer par carte ?"],["Buonissimo !","Délicieux !"]],
+ "Dans la rue":[["Dov’è la fermata ?","Où est l’arrêt ?"],["Un biglietto per…","Un billet pour…"],["Quanto costa fino a… ?","Combien jusqu’à… ? (au taxi)"],["Sinistra / Destra / Dritto","Gauche / Droite / Tout droit"],["Siamo francesi","On est français"],["Ci può fare una foto ?","Vous pouvez nous prendre en photo ?"]],
+ "Napolitain":[["Uè, guagliò !","Hé, mec !",1],["Jamme !","On y va !",1],["Mo","Maintenant",1],["Accussì","Comme ça",1],["Statte buono","Salut, prends soin de toi",1],["Cazzimma","La ruse napolitaine, un brin vicieuse",1],["Scugnizzo","Gamin des rues, débrouillard",1],["Ammore","Mon cœur (même entre potes)",1]]
+};
+let cat="Les bases";const canSay="speechSynthesis" in window;
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t.replace(/ \/ /g,", "));u.lang="it-IT";u.rate=.9;speechSynthesis.speak(u)}catch(e){}}
+function renderLex(){$("#cats").innerHTML="";Object.keys(LEX).forEach(k=>{const b=document.createElement("button");b.type="button";b.className="cat";b.textContent=k;b.setAttribute("aria-pressed",k===cat);b.onclick=()=>{cat=k;renderLex()};$("#cats").appendChild(b)});
+  if(!canSay)$("#lex-note").textContent="Ton navigateur ne lit pas les phrases à voix haute.";
+  const ul=$("#lex");ul.innerHTML="";LEX[cat].forEach(([it,fr,nap])=>{const li=document.createElement("li");const d=document.createElement("div");
+    d.innerHTML="<b></b><span></span>";d.querySelector("b").textContent=it;d.querySelector("span").textContent=fr;if(nap){const e=document.createElement("em");e.textContent="napolitain";d.querySelector("b").appendChild(e)}
+    li.appendChild(d);if(canSay){const b=document.createElement("button");b.type="button";b.className="say";b.textContent="🔊";b.setAttribute("aria-label","Écouter "+it);b.onclick=()=>say(it);li.appendChild(b)}ul.appendChild(li)})}
+/* Wheel */
+const PALS=["#1F4FA3","#F2611E","#2E8B57"];const WHO=["Ted","Oilid","Hadrien"];let rot=0,spinning=false;
+function drawWheel(){const w=$("#wheel");let h="";WHO.forEach((n,i)=>{const a0=(i*120-90)*Math.PI/180,a1=((i+1)*120-90)*Math.PI/180;
+  h+='<path d="M0 0 L'+(100*Math.cos(a0)).toFixed(2)+' '+(100*Math.sin(a0)).toFixed(2)+' A100 100 0 0 1 '+(100*Math.cos(a1)).toFixed(2)+' '+(100*Math.sin(a1)).toFixed(2)+' Z" fill="'+PALS[i]+'" stroke="#FFFFFF" stroke-width="3"/>';
+  const am=(i*120+60-90)*Math.PI/180;h+='<text x="'+(58*Math.cos(am)).toFixed(1)+'" y="'+(58*Math.sin(am)).toFixed(1)+'" fill="#FFFFFF" font-family="Figtree,sans-serif" font-weight="800" font-size="17" text-anchor="middle" dominant-baseline="middle" transform="rotate('+(i*120+60)+' '+(58*Math.cos(am)).toFixed(1)+' '+(58*Math.sin(am)).toFixed(1)+')">'+n+'</text>'});
+  h+='<circle r="14" fill="#F3C623" stroke="#FFFFFF" stroke-width="3"/>';w.innerHTML=h}
+$("#spin").onclick=()=>{if(spinning)return;spinning=true;const pick=Math.floor(Math.random()*3);const target=360-(pick*120+20+Math.random()*80);
+  rot=rot-(rot%360)+360*5+target;$("#wheel").style.transform="rotate("+rot+"deg)";$("#verdict").textContent="Ça tourne…";
+  const done=()=>{$("#verdict").textContent=WHO[pick]+" régale !";spinning=false};matchMedia("(prefers-reduced-motion: reduce)").matches?done():setTimeout(done,3300)};
+/* Spritz */
+let sp=store.get("spritz",0);
+function renderSpritz(){$("#sp-count").textContent=sp;$("#sp-label").textContent=sp<2?"spritz au compteur":"spritz au compteur. Salute !";
+  const lvl=sp===0?100:Math.max(8,100-((sp-1)%5+1)*18);$("#liquid").style.transform="translateY("+lvl+"px)"}
+$("#sp-add").onclick=()=>{sp++;store.set("spritz",sp);renderSpritz()};$("#sp-reset").onclick=()=>{sp=0;store.set("spritz",0);renderSpritz()};
+/* Tabs highlight */
+const tabs=[...document.querySelectorAll("#tabs a")];const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){tabs.forEach(t=>t.classList.toggle("on",t.getAttribute("href")==="#"+e.target.id))}})},{rootMargin:"-40% 0px -55% 0px"});
+document.querySelectorAll("main section").forEach(s=>io.observe(s));
+/* Theme */
+const root=document.documentElement;const th=store.get("theme",null);if(th)root.dataset.theme=th;
+$("#theme").onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme: dark)").matches;root.dataset.theme=dark?"light":"dark";store.set("theme",root.dataset.theme)};
+/* Init */
+const ti=todayIndex();current=ti>-1?ti:0;
+renderDays();renderDay();renderBooks();renderNear();renderLex();drawWheel();renderSpritz();renderStatus();
+setInterval(()=>{renderStatus();renderDay()},60000);
+</script>
+</body>
+</html>
